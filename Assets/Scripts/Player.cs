@@ -8,8 +8,21 @@ public class Player : MonoBehaviour {
 	public float atk = 1f;
 	public float spd = 1f;
 
+	Animator anim;
+
 	void Start () {
 		hp = maxHP;
+
+		anim = GetComponent<Animator> ();
+		InvokeRepeating ("Attack", 0f, 1f);
+	}
+
+	void Attack () {
+		anim.SetTrigger ("attack");
+	}
+
+	void Hit () {
+		anim.SetTrigger ("hit");
 	}
 
 	public void AddHP (float amt) {
