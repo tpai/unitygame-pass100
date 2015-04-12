@@ -9,16 +9,18 @@ public class GameManager : MonoBehaviour {
 
 		SpawnEnemy ();
 
-		LetsBattle ();
+		StartCoroutine("LetsBattle");
 	}
 
 	void Update () {
 
 	}
 
-	void LetsBattle () {
-		GameObject.Find ("Enemy").SendMessage ("Battle");
+	IEnumerator LetsBattle () {
+		yield return new WaitForSeconds (.5f);
 		GameObject.Find ("Player").SendMessage ("Battle");
+		yield return new WaitForSeconds (.8f);
+		GameObject.Find ("Enemy").SendMessage ("Battle");
 	}
 	
 	GameObject SpawnEnemy () {

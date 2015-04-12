@@ -15,16 +15,21 @@ public class Character : MonoBehaviour {
 	void Start () {
 		hp = maxHP;
 
+		anim = GetComponent<Animator> ();
+
+		StartCoroutine ("FindTarget");
+	}
+
+	IEnumerator FindTarget () {
+		yield return new WaitForSeconds (.5f);
 		if (isEnemy)
 			target = GameObject.Find ("Player").GetComponent<Character> ();
 		else
 			target = GameObject.Find ("Enemy").GetComponent<Character> ();
-
-		anim = GetComponent<Animator> ();
 	}
 
 	void Battle () {
-		InvokeRepeating ("Attack", 0f, 1f/spd);
+		InvokeRepeating ("Attack", .1f, 1f/spd);
 	}
 
 	void StopBattle () {
@@ -47,7 +52,7 @@ public class Character : MonoBehaviour {
 		else if(hp + amt < 0) {
 			hp = 0;
 			target.SendMessage("StopBattle");
-			Destroy (gameObject);
+			StartCoroutine("LateToDestroy");
 		}
 		else {
 			// under attack
@@ -65,5 +70,10 @@ public class Character : MonoBehaviour {
 
 	public void AddSPD (float amt) {
 		spd += amt;
+	}
+
+	IEnumerator LateToDestroy () {
+		yield return new WaitForSeconds(.5f);
+		Destroy (gameObject);
 	}
 }
