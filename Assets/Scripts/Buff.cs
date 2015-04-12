@@ -4,7 +4,7 @@ using System.Collections;
 public class Buff : MonoBehaviour {
 
 	Coin coin;
-	Player player;
+	Character player;
 
 	public int hpInput = 5;
 	public int atkInput = 1;
@@ -16,11 +16,11 @@ public class Buff : MonoBehaviour {
 
 	void Start () {
 		coin = GameObject.Find ("Coin").GetComponent<Coin> ();
-		player = GameObject.Find ("Player").GetComponent<Player> ();
+		player = GameObject.Find ("Player").GetComponent<Character> ();
 	}
 
 	public void AddHP () {
-		if (coin.coin - hpCost >= 0 && player.hp + hpInput <= player.maxHP) {
+		if (coin.coin - hpCost >= 0) {
 			// add hp
 			player.AddHP (hpInput);
 			coin.coin -= hpCost;

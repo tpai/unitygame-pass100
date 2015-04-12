@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Player : MonoBehaviour {
+public class Character : MonoBehaviour {
 
 	public float hp;
 	public float maxHP = 100f;
