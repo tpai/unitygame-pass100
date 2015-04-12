@@ -21,7 +21,8 @@ public class Character : MonoBehaviour {
 			target = GameObject.Find ("Enemy").GetComponent<Character> ();
 
 		anim = GetComponent<Animator> ();
-		InvokeRepeating ("Attack", 0f, 1f);
+
+		InvokeRepeating ("Attack", 0f, 1f/spd);
 	}
 
 	void Attack () {
@@ -41,6 +42,11 @@ public class Character : MonoBehaviour {
 			hp = 0;
 		}
 		else {
+			// under attack
+			if(amt < 0) {
+				Hit ();
+			}
+
 			hp += amt;
 		}
 	}

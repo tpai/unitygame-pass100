@@ -18,6 +18,6 @@ public class EnemyVars : MonoBehaviour {
 
 		transform.Find ("HP").GetComponent<Text> ().text = "HP:"+hp.ToString("F0");
 		transform.Find ("ATK").GetComponent<Text> ().text = "ATK:"+atk.ToString("F0");
-		transform.Find ("SPD").GetComponent<Text> ().text = "SPD:"+spd.ToString("F0");
+		transform.Find ("SPD").GetComponent<Text> ().text = "SPD:"+spd.ToString("F2");
 	}
 }
