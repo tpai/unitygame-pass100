@@ -12,7 +12,7 @@ public class Player : MonoBehaviour {
 		hp = maxHP;
 	}
 
-	void AddHP (float amt) {
+	public void AddHP (float amt) {
 		if (hp + amt > maxHP) {
 			hp = maxHP;
 		}
@@ -24,11 +24,11 @@ public class Player : MonoBehaviour {
 		}
 	}
 
-	void AddATK (float amt) {
+	public void AddATK (float amt) {
 		atk += amt;
 	}
 
-	void AddSPD (float amt) {
+	public void AddSPD (float amt) {
 		spd += amt;
 	}
 }
