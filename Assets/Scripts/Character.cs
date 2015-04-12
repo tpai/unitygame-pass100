@@ -21,8 +21,14 @@ public class Character : MonoBehaviour {
 			target = GameObject.Find ("Enemy").GetComponent<Character> ();
 
 		anim = GetComponent<Animator> ();
+	}
 
+	void Battle () {
 		InvokeRepeating ("Attack", 0f, 1f/spd);
+	}
+
+	void StopBattle () {
+		CancelInvoke ("Attack");
 	}
 
 	void Attack () {
@@ -40,6 +46,8 @@ public class Character : MonoBehaviour {
 		}
 		else if(hp + amt < 0) {
 			hp = 0;
+			target.SendMessage("StopBattle");
+			Destroy (gameObject);
 		}
 		else {
 			// under attack
