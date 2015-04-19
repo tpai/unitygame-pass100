@@ -4,17 +4,13 @@ using System.Collections;
 
 public class Coin : MonoBehaviour {
 
-	public int coin = 100;
-
-	void Start () {
-
-	}
+	public static int coin = 100;
 
 	void Update () {
 		GetComponent<Text> ().text = "COIN:" + coin;
 	}
 
-	void Add (int amt) {
+	public static void Add (int amt) {
 		if (coin + amt > 999999) {
 			coin = 999999;
 		}
