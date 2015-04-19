@@ -10,10 +10,20 @@ public class GameManager : MonoBehaviour {
 		SpawnEnemy ();
 
 		StartCoroutine("LetsBattle");
+
+		InvokeRepeating ("IfExistGoToNextLevel", 1f, 1f);
 	}
 
-	void Update () {
+	void IfExistGoToNextLevel () {
+		if (DetectEnemyExist () == false) {
+			// next level
+			Debug.Log ("Go To Next Level!");
+		}
+	}
 
+	bool DetectEnemyExist () {
+		if (GameObject.Find ("Enemy") == null)return false;
+		else return true;
 	}
 
 	IEnumerator LetsBattle () {

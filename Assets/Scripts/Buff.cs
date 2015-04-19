@@ -8,7 +8,7 @@ public class Buff : MonoBehaviour {
 
 	public int hpInput = 5;
 	public int atkInput = 1;
-	public int spdInput = 1;
+	public float spdInput = 1;
 
 	public int hpCost = 5;
 	public int atkCost = 10;
