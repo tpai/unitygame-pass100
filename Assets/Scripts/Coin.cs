@@ -4,7 +4,13 @@ using System.Collections;
 
 public class Coin : MonoBehaviour {
 
-	public static int coin = 100;
+	public static int coin;
+	public static int totalCoin;
+
+	void Start () {
+		coin = 0;
+		totalCoin = 0;
+	}
 
 	void Update () {
 		GetComponent<Text> ().text = "COIN:" + coin;
@@ -19,6 +25,8 @@ public class Coin : MonoBehaviour {
 		}
 		else {
 			coin += amt;
+
+			if (amt > 0)totalCoin += amt;
 		}
 	}
 }

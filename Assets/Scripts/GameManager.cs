@@ -21,10 +21,22 @@ public class GameManager : MonoBehaviour {
 			SpawnEnemy ();
 			StartCoroutine("LetsBattle");
 		}
+
+		if (DetectPlayerExist () == false) {
+			// player died
+			PlayerPrefs.SetInt("TotalCoin", Coin.totalCoin);
+			PlayerPrefs.SetInt("CorrectTyping", EarnCoin.correctTyping);
+			PlayerPrefs.SetInt("WrongTyping", EarnCoin.wrongTyping);
+		}
 	}
 
 	bool DetectEnemyExist () {
 		if (GameObject.Find ("Enemy") == null)return false;
+		else return true;
+	}
+
+	bool DetectPlayerExist () {
+		if (GameObject.Find ("Player") == null)return false;
 		else return true;
 	}
 

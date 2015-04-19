@@ -5,8 +5,12 @@ using System.Collections;
 public class EarnCoin : MonoBehaviour {
 
 	int answer = 0;
+	public static int correctTyping;
+	public static int wrongTyping;
 
 	void Start () {
+		correctTyping = 0;
+		wrongTyping = 0;
 		RandomNumber ();
 	}
 
@@ -35,9 +39,11 @@ public class EarnCoin : MonoBehaviour {
 			int key = (int)e.keyCode - (int)KeyCode.Keypad0;
 			if (key == answer) {
 				Coin.Add (1000);
+				correctTyping ++;
 				RandomNumber ();
 			}
 			else {
+				wrongTyping ++;
 				Coin.Add (1);
 			}
 			Event.current.Use();

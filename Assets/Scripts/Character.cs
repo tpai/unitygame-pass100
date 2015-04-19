@@ -39,7 +39,9 @@ public class Character : MonoBehaviour {
 
 	void Attack () {
 		anim.SetTrigger ("attack");
-		target.AddHP (-atk);
+		if (target != null) {
+			target.AddHP (-atk);
+		}
 	}
 
 	void Hit () {
@@ -54,6 +56,13 @@ public class Character : MonoBehaviour {
 			hp = 0;
 			StopBattle ();
 			target.SendMessage("StopBattle");
+			if (transform.name == "Enemy") {
+				Coin.Add (Level.nowLevel * 1000);
+			}
+			else if(transform.name == "Player") {
+				PlayerPrefs.SetFloat("FinalATK", atk);
+				PlayerPrefs.SetInt("FinalSPD", spd);
+			}
 			Destroy (gameObject);
 		}
 		else {
