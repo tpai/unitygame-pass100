@@ -17,7 +17,9 @@ public class GameManager : MonoBehaviour {
 	void IfExistGoToNextLevel () {
 		if (DetectEnemyExist () == false) {
 			// next level
-			Debug.Log ("Go To Next Level!");
+			Level.Next ();
+			SpawnEnemy ();
+			StartCoroutine("LetsBattle");
 		}
 	}
 
@@ -40,6 +42,9 @@ public class GameManager : MonoBehaviour {
 			Quaternion.identity
 		);
 		obj.name = "Enemy";
+		GameObject.Find ("Player").SendMessage ("Init");
+		GameObject.Find ("Enemy").SendMessage ("Init");
+		GameObject.Find ("EnemyVars").SendMessage ("Bind");
 		return obj;
 	}
 }

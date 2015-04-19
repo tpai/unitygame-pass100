@@ -12,7 +12,7 @@ public class Character : MonoBehaviour {
 	Character target;
 	Animator anim;
 
-	void Start () {
+	void Init () {
 		hp = maxHP;
 
 		anim = GetComponent<Animator> ();
@@ -51,8 +51,10 @@ public class Character : MonoBehaviour {
 		}
 		else if(hp + amt < 0) {
 			hp = 0;
+			StopBattle ();
 			target.SendMessage("StopBattle");
-			StartCoroutine("LateToDestroy");
+			Destroy (gameObject);
+			//StartCoroutine("LateToDestroy");
 		}
 		else {
 			// under attack
