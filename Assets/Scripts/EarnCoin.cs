@@ -42,7 +42,7 @@ public class EarnCoin : MonoBehaviour {
 				correctTyping ++;
 				RandomNumber ();
 			}
-			else {
+			else if (key >= 0 && key < 10) {
 				wrongTyping ++;
 				Coin.Add (1);
 			}

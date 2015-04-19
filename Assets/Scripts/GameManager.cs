@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour {
 			PlayerPrefs.SetInt("TotalCoin", Coin.totalCoin);
 			PlayerPrefs.SetInt("CorrectTyping", EarnCoin.correctTyping);
 			PlayerPrefs.SetInt("WrongTyping", EarnCoin.wrongTyping);
+
+			Application.LoadLevel ("Result");
 		}
 	}
 
@@ -54,6 +56,7 @@ public class GameManager : MonoBehaviour {
 			Quaternion.identity
 		);
 		obj.name = "Enemy";
+		obj.GetComponent<Character>().atk += Level.nowLevel;
 		GameObject.Find ("Player").SendMessage ("Bind");
 		GameObject.Find ("Enemy").SendMessage ("Bind");
 		GameObject.Find ("EnemyVars").SendMessage ("Bind");

@@ -61,7 +61,7 @@ public class Character : MonoBehaviour {
 			}
 			else if(transform.name == "Player") {
 				PlayerPrefs.SetFloat("FinalATK", atk);
-				PlayerPrefs.SetInt("FinalSPD", spd);
+				PlayerPrefs.SetFloat("FinalSPD", spd);
 			}
 			Destroy (gameObject);
 		}
