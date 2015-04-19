@@ -34,8 +34,11 @@ public class EarnCoin : MonoBehaviour {
 		{
 			int key = (int)e.keyCode - (int)KeyCode.Keypad0;
 			if (key == answer) {
-				Coin.Add (5);
+				Coin.Add (1000);
 				RandomNumber ();
+			}
+			else {
+				Coin.Add (1);
 			}
 			Event.current.Use();
 		}

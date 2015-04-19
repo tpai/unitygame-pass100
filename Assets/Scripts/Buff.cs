@@ -19,7 +19,7 @@ public class Buff : MonoBehaviour {
 	}
 
 	public void AddHP () {
-		if (Coin.coin - hpCost >= 0) {
+		if (Coin.coin - hpCost >= 0 && player.hp < 100) {
 			// add hp
 			player.AddHP (hpInput);
 			Coin.coin -= hpCost;

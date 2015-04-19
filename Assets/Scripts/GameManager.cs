@@ -42,8 +42,8 @@ public class GameManager : MonoBehaviour {
 			Quaternion.identity
 		);
 		obj.name = "Enemy";
-		GameObject.Find ("Player").SendMessage ("Init");
-		GameObject.Find ("Enemy").SendMessage ("Init");
+		GameObject.Find ("Player").SendMessage ("Bind");
+		GameObject.Find ("Enemy").SendMessage ("Bind");
 		GameObject.Find ("EnemyVars").SendMessage ("Bind");
 		return obj;
 	}

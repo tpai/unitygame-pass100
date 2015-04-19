@@ -12,11 +12,12 @@ public class Character : MonoBehaviour {
 	Character target;
 	Animator anim;
 
-	void Init () {
+	void Start () {
 		hp = maxHP;
-
 		anim = GetComponent<Animator> ();
+	}
 
+	void Bind () {
 		StartCoroutine ("FindTarget");
 	}
 
@@ -54,7 +55,6 @@ public class Character : MonoBehaviour {
 			StopBattle ();
 			target.SendMessage("StopBattle");
 			Destroy (gameObject);
-			//StartCoroutine("LateToDestroy");
 		}
 		else {
 			// under attack
@@ -72,10 +72,5 @@ public class Character : MonoBehaviour {
 
 	public void AddSPD (float amt) {
 		spd += amt;
-	}
-
-	IEnumerator LateToDestroy () {
-		yield return new WaitForSeconds(.5f);
-		Destroy (gameObject);
 	}
 }
